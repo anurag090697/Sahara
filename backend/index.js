@@ -9,11 +9,11 @@ import saharaRouter from "./routes/saharaRoutes.js";
 
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: process.env.MAIN_PORT,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
 };
- 
+//  console.log(process.env.MAIN_PORT)
 const app = express();
 const port = 6789;
 
