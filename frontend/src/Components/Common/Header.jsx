@@ -14,10 +14,7 @@ function Header() {
   const { user } = useSelector((state) => state.sahara);
   const [dropdown, setDropdown] = useState(false);
 
-  useEffect(() => {
-    dispatch(alreadyLogged({}));
-    // console.log(user);
-  }, []);
+  
 
   function logoutUser() {
     dispatch(userLogout({}));

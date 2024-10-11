@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Components/Common/Header";
@@ -11,8 +11,15 @@ import Home from "./Components/Home";
 import AdminHome from "./Components/adminStuff/AdminHome";
 import ProductManage from "./Components/adminStuff/ProductManage";
 import AdminRoute from "./Components/adminStuff/AdminRoute";
-
+import { useDispatch, useSelector } from "react-redux";
+import { alreadyLogged } from "./slice";
 function App() {
+  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(alreadyLogged({}));
+    // console.log(user);
+  }, []);
   return (
     <BrowserRouter>
       <div className='container w-full min-h-dvh min-w-full bg-gradient-to-br from-yellow-800 to-blue-800 relative'>
