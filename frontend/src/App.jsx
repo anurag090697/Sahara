@@ -14,7 +14,6 @@ import AdminRoute from "./Components/adminStuff/AdminRoute";
 import { useDispatch, useSelector } from "react-redux";
 import { alreadyLogged } from "./slice";
 function App() {
-  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(alreadyLogged({}));

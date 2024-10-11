@@ -56,7 +56,7 @@ export async function userLogin(req, res) {
       res
         .cookie("sahara_token", newToken, {
           httpOnly: true,
-          secure: false,
+          secure: true,
           sameSite: "strict",
           maxAge: 9600000,
         })

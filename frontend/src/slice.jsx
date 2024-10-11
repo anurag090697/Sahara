@@ -44,8 +44,9 @@ export const alreadyLogged = createAsyncThunk(
   "sahara/alreadyLogged",
   async ({}, { rejectWithValue }) => {
     try {
+      // console.log('first')
       const response = await axiosInstance.get("/userLogged");
-      //   console.log(response);
+        console.log(response);
       return response.data;
     } catch (error) {
       //   console.log(error);
