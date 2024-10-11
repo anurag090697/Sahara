@@ -9,6 +9,8 @@ import Login from "./Components/User/Login";
 import ForgotPassword from "./Components/User/ForgotPassword";
 import Home from "./Components/Home";
 import AdminHome from "./Components/adminStuff/AdminHome";
+import ProductManage from "./Components/adminStuff/ProductManage";
+import AdminRoute from "./Components/adminStuff/AdminRoute";
 
 function App() {
   return (
@@ -22,8 +24,20 @@ function App() {
             path='/user/forgotpassword'
             element={<ForgotPassword></ForgotPassword>}
           ></Route>
-          <Route path='/home' element={<Home></Home>}></Route>
-          <Route path='/admin/home' element={<AdminHome></AdminHome>}></Route>
+          <Route path='/' element={<Home></Home>}></Route>
+          <Route
+            path='/admin/home'
+            element={
+              // <AdminRoute></AdminRoute>
+              <AdminHome></AdminHome>
+            }
+          ></Route>
+
+          <Route
+            path='/admin/productManage'
+            element={<ProductManage></ProductManage>}
+          ></Route>
+          {/* <Route path='/home'></Route> */}
         </Routes>
       </div>
     </BrowserRouter>

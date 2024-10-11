@@ -20,12 +20,14 @@ function Login() {
     // console.log(email, password, role);
     dispatch(userLogin({ email, password, role }));
   }
-//   console.log(user);
-    useEffect(() => {
-      if (user.logged && user.role === 'admin') {
-        navigate("/admin/home");
-      }
-    }, [user]);
+  //   console.log(user);
+  useEffect(() => {
+    if (user.logged && user.role === "admin") {
+      navigate("/admin/home");
+    } else if (user.logged && user.role === "user") {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className='user w-full min-h-dvh pt-20 lg:pr-40 flex items-center justify-center lg:justify-end'>
@@ -39,6 +41,7 @@ function Login() {
           onSubmit={(e) => logThatUser(e)}
         >
           <input
+            name='email'
             type='email'
             className='py-2 px-3 text-center rounded-lg border-2 border-gray-400 shadow-md shadow-cyan-900 outline-lime-600 font-medium'
             required
@@ -49,6 +52,7 @@ function Login() {
 
           <input
             type='password'
+            name='password'
             className='py-2 px-3 text-center rounded-lg border-2 border-gray-400 shadow-md shadow-cyan-900 outline-lime-600 font-medium'
             required
             placeholder='Enter Password'

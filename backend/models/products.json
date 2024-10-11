@@ -1,0 +1,319 @@
+[
+  {
+    "title": "Stylish Casual Shirt",
+    "upis": "UPIS123456",
+    "images": [
+      "https://example.com/images/shirt1.jpg",
+      "https://example.com/images/shirt2.jpg"
+    ],
+    "description": "A comfortable and stylish casual shirt perfect for everyday wear.",
+    "inStock": true,
+    "brand": "FashionCo",
+    "category": "Apparel",
+    "offerPrice": 29.99,
+    "originalPrice": 49.99,
+    "inventory": 150,
+    "attributes": {
+      "size": "L",
+      "color": "Blue"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "Great quality and fits perfectly!",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "Wireless Bluetooth Headphones",
+    "upis": "UPIS654321",
+    "images": [
+      "https://example.com/images/headphones1.jpg",
+      "https://example.com/images/headphones2.jpg"
+    ],
+    "description": "Noise-cancelling wireless headphones with premium sound quality.",
+    "inStock": false,
+    "brand": "SoundX",
+    "category": "Electronics",
+    "offerPrice": 99.99,
+    "originalPrice": 149.99,
+    "inventory": 0,
+    "attributes": {
+      "color": "Black"
+    },
+    "ratings": [
+      {
+        "star": 4,
+        "comment": "Excellent sound but a bit pricey.",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "Smart Fitness Tracker",
+    "upis": "UPIS987654",
+    "images": [
+      "https://example.com/images/tracker1.jpg",
+      "https://example.com/images/tracker2.jpg"
+    ],
+    "description": "Track your fitness and health metrics with this smart tracker.",
+    "inStock": true,
+    "brand": "HealthPlus",
+    "category": "Wearables",
+    "offerPrice": 49.99,
+    "originalPrice": 79.99,
+    "inventory": 80,
+    "attributes": {
+      "size": "M",
+      "color": "Red"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "Perfect for tracking daily activity!",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "Ergonomic Office Chair",
+    "upis": "UPIS112233",
+    "images": [
+      "https://example.com/images/chair1.jpg",
+      "https://example.com/images/chair2.jpg"
+    ],
+    "description": "Comfortable office chair with ergonomic design for long hours of work.",
+    "inStock": true,
+    "brand": "ComfortZone",
+    "category": "Furniture",
+    "offerPrice": 199.99,
+    "originalPrice": 249.99,
+    "inventory": 60,
+    "attributes": {
+      "color": "Gray"
+    },
+    "ratings": [
+      {
+        "star": 4,
+        "comment": "Very comfortable, but a bit bulky.",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "Portable Power Bank",
+    "upis": "UPIS445566",
+    "images": ["https://example.com/images/powerbank1.jpg"],
+    "description": "Compact power bank with fast charging capabilities.",
+    "inStock": true,
+    "brand": "ChargeIt",
+    "category": "Accessories",
+    "offerPrice": 24.99,
+    "originalPrice": 39.99,
+    "inventory": 200,
+    "attributes": {
+      "color": "White"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "Charges my phone multiple times!",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "SuperPhone X Pro",
+    "upis": "UPIS777888",
+    "images": [
+      "https://example.com/images/phone1.jpg",
+      "https://example.com/images/phone2.jpg"
+    ],
+    "description": "Latest flagship phone with AI-powered camera and 5G support.",
+    "inStock": true,
+    "brand": "TechSmart",
+    "category": "Phones",
+    "offerPrice": 899.99,
+    "originalPrice": 999.99,
+    "inventory": 120,
+    "attributes": {
+      "size": "6.7 inches",
+      "color": "Space Gray"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "The camera is mind-blowing, and performance is top-notch!",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "BudgetPhone Z Lite",
+    "upis": "UPIS555666",
+    "images": [
+      "https://example.com/images/phone3.jpg",
+      "https://example.com/images/phone4.jpg"
+    ],
+    "description": "Affordable smartphone with long battery life and decent performance.",
+    "inStock": true,
+    "brand": "SmartCell",
+    "category": "Phones",
+    "offerPrice": 149.99,
+    "originalPrice": 199.99,
+    "inventory": 300,
+    "attributes": {
+      "size": "6.1 inches",
+      "color": "Black"
+    },
+    "ratings": [
+      {
+        "star": 4,
+        "comment": "Great value for money, but the camera could be better.",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+
+  {
+    "title": "4K Ultra HD Smart TV",
+    "upis": "UPIS123789",
+    "images": [
+      "https://example.com/images/tv1.jpg",
+      "https://example.com/images/tv2.jpg"
+    ],
+    "description": "Experience immersive visuals with this 55-inch 4K Ultra HD Smart TV.",
+    "inStock": true,
+    "brand": "VisionTech",
+    "category": "Electronics",
+    "offerPrice": 699.99,
+    "originalPrice": 899.99,
+    "inventory": 50,
+    "attributes": {
+      "size": "55 inches",
+      "color": "Black"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "Amazing picture quality and sound at a great price.",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "High-Performance Laptop",
+    "upis": "UPIS987123",
+    "images": [
+      "https://example.com/images/laptop1.jpg",
+      "https://example.com/images/laptop2.jpg"
+    ],
+    "description": "A powerful laptop with Intel i7 processor and 16GB RAM for multitasking.",
+    "inStock": true,
+    "brand": "CompTech",
+    "category": "Electronics",
+    "offerPrice": 1199.99,
+    "originalPrice": 1399.99,
+    "inventory": 40,
+    "attributes": {
+      "size": "15.6 inches",
+      "color": "Silver"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "Runs all my applications smoothly, perfect for work and gaming!",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+
+  {
+    "title": "Smart Air Purifier",
+    "upis": "UPIS223344",
+    "images": [
+      "https://example.com/images/purifier1.jpg",
+      "https://example.com/images/purifier2.jpg"
+    ],
+    "description": "Breathe clean air with this smart purifier featuring HEPA filters.",
+    "inStock": true,
+    "brand": "AirPure",
+    "category": "Home Appliances",
+    "offerPrice": 199.99,
+    "originalPrice": 249.99,
+    "inventory": 90,
+    "attributes": {
+      "size": "Compact",
+      "color": "White"
+    },
+    "ratings": [
+      {
+        "star": 4,
+        "comment": "Quiet and effective at removing dust and allergens.",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+  {
+    "title": "Electric Blender",
+    "upis": "UPIS334455",
+    "images": [
+      "https://example.com/images/blender1.jpg",
+      "https://example.com/images/blender2.jpg"
+    ],
+    "description": "Blend your favorite smoothies and shakes with this powerful blender.",
+    "inStock": true,
+    "brand": "KitchenMaster",
+    "category": "Kitchen Appliances",
+    "offerPrice": 59.99,
+    "originalPrice": 79.99,
+    "inventory": 180,
+    "attributes": {
+      "size": "1.5L",
+      "color": "Red"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "Super powerful and easy to clean!",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  },
+
+  {
+    "title": "Luxury Wrist Watch",
+    "upis": "UPIS556677",
+    "images": ["https://example.com/images/watch1.jpg"],
+    "description": "Elegant wristwatch with stainless steel band and water resistance.",
+    "inStock": true,
+    "brand": "Timeless",
+    "category": "Accessories",
+    "offerPrice": 349.99,
+    "originalPrice": 399.99,
+    "inventory": 25,
+    "attributes": {
+      "color": "Silver"
+    },
+    "ratings": [
+      {
+        "star": 5,
+        "comment": "Beautiful watch, perfect for formal occasions.",
+        "postedBy": "650b5bcf1f892a76d4e8dca1"
+      }
+    ],
+    "addedBy": "650b5bcf1f892a76d4e8dca1"
+  }
+]

@@ -14,6 +14,8 @@ export const userRegister = createAsyncThunk(
     try {
       //   console.log(data);
       const response = await axiosInstance.post("/register", data);
+      //  console.log("hurray");
+      console.log(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error);
@@ -30,7 +32,7 @@ export const userLogin = createAsyncThunk(
         password,
         role,
       });
-      console.log(response);
+      // console.log(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error);
@@ -43,7 +45,7 @@ export const alreadyLogged = createAsyncThunk(
   async ({}, { rejectWithValue }) => {
     try {
       const response = await axiosInstance.get("/userLogged");
-    //   console.log(response);
+      //   console.log(response);
       return response.data;
     } catch (error) {
       //   console.log(error);
@@ -73,7 +75,9 @@ export const forgotpassword1 = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return rejectWithValue(error);
+      // console.log(rejectWithValue(error));
+      // if (error.status === 401) return { message: "user not found" };
+      return rejectWithValue(error).payload.response.data;
     }
   }
 );
@@ -87,8 +91,54 @@ export const forgotpassword2 = createAsyncThunk(
         otp,
         password,
       });
+      // console.log(response);
       return response.data;
     } catch (error) {
+      // console.log(rejectWithValue(error));
+
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getAllProducts = createAsyncThunk(
+  "sahara/getAllProducts",
+  async ({}, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get("/allProducts", {});
+      // console.log(response.data);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const addNewProduct = createAsyncThunk(
+  "sahara/addNewProduct",
+  async (fData, { rejectWithValue }) => {
+    try {
+      // const addedBy = user._id || "66f1dc7263d63696ae02cded";
+      // formData.addedBy = addedBy;
+      const response = await axiosInstance.post("/addNewProduct", fData);
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteOneProduct = createAsyncThunk(
+  "sahara/deleteOneProduct",
+  async (upis, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.delete(`/removeProduct/${upis}`);
+      // console.log(response);
+      // if (response.status === 202) getAllProducts;
+      return response.data;
+    } catch (error) {
+      console.log(rejectWithValue(error));
       return rejectWithValue(error);
     }
   }
@@ -99,7 +149,10 @@ const saharaSlice = createSlice({
   initialState: {
     registered: {},
     user: { logged: false },
-    forgotPassword: { message: "", otpVerified: false },
+    forgotPassword: { message: "", otpVerified: false, error: "" },
+    adminProducts: [],
+    multiResponse: { item: "", message: "", error: "" },
+    deletedProduct: {},
     status: "idle",
     error: null,
   },
@@ -115,7 +168,7 @@ const saharaSlice = createSlice({
       })
       .addCase(userRegister.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.payload;
+        state.registered = action.payload;
       })
       .addCase(userLogin.pending, (state) => {
         state.status = "loading";
@@ -170,10 +223,43 @@ const saharaSlice = createSlice({
       })
       .addCase(forgotpassword2.fulfilled, (state, action) => {
         state.status = "succeeded";
-
         state.forgotPassword = action.payload;
       })
       .addCase(forgotpassword2.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(getAllProducts.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getAllProducts.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.adminProducts = action.payload;
+      })
+      .addCase(getAllProducts.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(addNewProduct.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(addNewProduct.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.multiResponse = action.payload;
+      })
+      .addCase(addNewProduct.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(deleteOneProduct.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(deleteOneProduct.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        let tm = action.payload;
+        state.deletedProduct = { ...tm, status: 202 };
+      })
+      .addCase(deleteOneProduct.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { forgotpassword1, forgotpassword2 } from "../../slice";
 import { useNavigate } from "react-router-dom";
@@ -18,16 +18,23 @@ function ForgotPassword() {
     e.preventDefault();
     if (email) dispatch(forgotpassword1({ email }));
     else alert("enter a valid email");
-    setwhichform(!whichform);
+    // setwhichform(!whichform);
   }
   function verifyOTP(e) {
     e.preventDefault();
     if (password === cpassword) {
       dispatch(forgotpassword2({ email, otp, password }));
     }
-    setwhichform(!whichform);
+    // setwhichform(!whichform);
   }
-
+  useEffect(() => {
+    if (forgotPassword.statusText === "OK") setwhichform(false);
+    else if (forgotPassword.otpVerified) {
+      
+      navigate("/user/login");
+    } 
+    // console.log(forgotPassword);
+  }, [forgotPassword]);
   // function changePassword(e) {
   //   e.preventDefault();
 
@@ -45,6 +52,7 @@ function ForgotPassword() {
           }`}
         >
           <input
+            name="email"
             type='email'
             className={`py-2 px-3 text-center rounded-lg border-2 border-gray-400 shadow-md shadow-cyan-900 outline-lime-600 font-medium `}
             placeholder='Enter Email'
@@ -66,6 +74,7 @@ function ForgotPassword() {
           }`}
         >
           <input
+            name='otp'
             type='number'
             placeholder='Enter OTP'
             value={otp}
@@ -74,6 +83,7 @@ function ForgotPassword() {
             className={`py-2 px-3 text-center rounded-lg border-2 border-gray-400 shadow-md shadow-cyan-900 outline-lime-600 font-medium`}
           />
           <input
+            name='password'
             type='password'
             className={`py-2 px-3 text-center rounded-lg border-2 border-gray-400 shadow-md shadow-cyan-900 outline-lime-600 font-medium`}
             placeholder='Enter Password'
@@ -81,6 +91,7 @@ function ForgotPassword() {
             onChange={(e) => setPassword(e.target.value)}
           />{" "}
           <input
+            name='confirm_password'
             type='password'
             required
             className={`py-2 px-3 text-center rounded-lg border-2 border-gray-400 shadow-md shadow-cyan-900 outline-lime-600 font-medium`}
@@ -95,8 +106,9 @@ function ForgotPassword() {
             Submit
           </button>
         </form>
-        <div className='w-full text-center font-medium py-3 text-fuchsia-600'>
-          {forgotPassword.message}
+        <div className='w-full text-center font-medium py-3'>
+          <p className=' text-fuchsia-600'>{forgotPassword.message}</p>{" "}
+          <p className='text-rose-600'>{forgotPassword.error}</p>
         </div>
         <h1 className='flex items-center  font-medium text-2xl text-gray-600'>
           <hr className='w-1/2 border' />

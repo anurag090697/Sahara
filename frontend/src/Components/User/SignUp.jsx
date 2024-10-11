@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { userRegister } from "../../slice";
@@ -31,13 +31,7 @@ function SignUp() {
     e.preventDefault();
 
     if (formData.password === cpass) {
-      dispatch(userRegister({ ...formData }));
-      if (status === "succeeded") {
-        setResMsg({ message: "User added successfully", error: "" });
-        setTimeout(() => {
-          setResMsg({ message: "", error: "" });
-        }, 4000);
-      }
+      dispatch(userRegister({...formData}));
     } else {
       setResMsg({ message: "", error: "Password does not match" });
       setTimeout(() => {
@@ -45,6 +39,14 @@ function SignUp() {
       }, 4000);
     }
   }
+  useEffect(() => {
+    if (registered.message) {
+      setResMsg({ message: "User added successfully", error: "" });
+      setTimeout(() => {
+        setResMsg({ message: "", error: "" });
+      }, 4000);
+    }
+  }, [registered]);
 
   return (
     <div className='user w-full min-h-dvh pt-20 lg:pr-40 flex items-center justify-center lg:justify-end'>
