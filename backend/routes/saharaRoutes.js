@@ -12,7 +12,9 @@ import {
 } from "../controllers/userController.js";
 import {
   addNewProduct,
+  changeWishlist,
   getAllProducts,
+  getCartList,
   removeProduct,
 } from "../controllers/productController.js";
 import loginCheck from "../middlewares/loginCheck.js";
@@ -36,25 +38,27 @@ saharaRouter.post("/updateProfile", profileUpdate);
 saharaRouter.get("/allProducts", getAllProducts);
 saharaRouter.delete("/removeProduct/:upis", removeProduct);
 saharaRouter.post("/addNewProduct", upload.single("pics"), addNewProduct);
-saharaRouter.post(
-  "/postPicture",
-  // tempMiid,
-  upload.single("image"),
-  async (req, res) => {
-    try {
-      // console.log(req.body);
-      let url = await uploadImage(req);
-      console.log(url);
-      res.send("url");
-    } catch (error) {
-      console.log(error);
-      res.send(error);
-    }
-  }
-);
+saharaRouter.post("/getcartlist", getCartList);
+saharaRouter.post("/checkWishlist", changeWishlist);
+// saharaRouter.post(
+//   "/postPicture",
+//   // tempMiid,
+//   upload.single("image"),
+//   async (req, res) => {
+//     try {
+//       // console.log(req.body);
+//       let url = await uploadImage(req);
+//       console.log(url);
+//       res.send("url");
+//     } catch (error) {
+//       console.log(error);
+//       res.send(error);
+//     }
+//   }
+// );
 
-function tempMiid(req, res, next) {
-  console.log(req.body.url);
-  next();
-}
+// function tempMiid(req, res, next) {
+//   console.log(req.body.url);
+//   next();
+// }
 export default saharaRouter;

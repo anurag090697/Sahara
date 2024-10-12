@@ -46,7 +46,7 @@ export const alreadyLogged = createAsyncThunk(
     try {
       // console.log('first')
       const response = await axiosInstance.get("/userLogged");
-        console.log(response);
+      // console.log(response);
       return response.data;
     } catch (error) {
       //   console.log(error);
@@ -115,6 +115,36 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
+export const getcartlist = createAsyncThunk(
+  "sahara/getcartlist",
+  async ({ uid, email }, { rejectWithValue }) => {
+    try {
+      // console.log(uid, email);
+      const response = await axiosInstance.post("/getcartlist", { uid, email });
+      // console.log(response);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const todoWishlist = createAsyncThunk(
+  "sahara/todoWishlist",
+  async ({ email, doThis, upis }, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.post("/checkWishlist", {
+        email,
+        upis,
+        doThis,
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const addNewProduct = createAsyncThunk(
   "sahara/addNewProduct",
   async (fData, { rejectWithValue }) => {
@@ -154,6 +184,8 @@ const saharaSlice = createSlice({
     adminProducts: [],
     multiResponse: { item: "", message: "", error: "" },
     deletedProduct: {},
+    cart: {},
+    wishlist: [],
     status: "idle",
     error: null,
   },
@@ -261,6 +293,32 @@ const saharaSlice = createSlice({
         state.deletedProduct = { ...tm, status: 202 };
       })
       .addCase(deleteOneProduct.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(getcartlist.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getcartlist.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        let tm = action.payload;
+        state.cart = tm.cartData;
+        state.wishlist = tm.wishlistData.products;
+      })
+      .addCase(getcartlist.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(todoWishlist.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(todoWishlist.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        let tm = action.payload;
+        // state.cart = tm.cartData;
+        state.wishlist = tm.wishlistData.products;
+      })
+      .addCase(todoWishlist.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

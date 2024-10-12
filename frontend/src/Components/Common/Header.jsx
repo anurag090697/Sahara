@@ -4,21 +4,28 @@ import React, { useEffect, useState } from "react";
 import logo1 from "../../assets/Images/logo1.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { alreadyLogged, userLogout } from "../../slice";
+import { alreadyLogged, getcartlist, userLogout } from "../../slice";
 import { TiThMenu } from "react-icons/ti";
 import { PiUserListBold } from "react-icons/pi";
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.sahara);
+  const { user, cart, wishlist } = useSelector((state) => state.sahara);
   const [dropdown, setDropdown] = useState(false);
-
-  
 
   function logoutUser() {
     dispatch(userLogout({}));
   }
+
+  // console.log(cart, wishlist);
+
+  useEffect(() => {
+    if (user.logged && user.role === "user") {
+      // console.log({uid: user._id, email: user.email});
+      dispatch(getcartlist({ uid: user._id, email: user.email }));
+    }
+  }, [user]);
 
   const logio = (
     <div className='flex gap-3 items-center font-medium text-xl relative'>

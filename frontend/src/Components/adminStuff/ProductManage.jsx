@@ -5,6 +5,7 @@ import { RiDeleteBinFill } from "react-icons/ri";
 import { addNewProduct } from "../../slice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import AdminPages from "./AdminPages";
 
 function ProductManage() {
   const dispatch = useDispatch();
@@ -101,7 +102,8 @@ function ProductManage() {
   }
 
   return (
-    <div className='pt-20 pb-10 bg-gradient-to-br from-fuchsia-300 to-cyan-200 w-full min-h-dvh'>
+    <div className='pt-16 pb-10 bg-gradient-to-br from-fuchsia-300 to-cyan-200 w-full min-h-dvh'>
+      <AdminPages></AdminPages>
       <div className='px-24 flex items-center justify-center'>
         <form
           action=''

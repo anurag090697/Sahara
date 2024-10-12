@@ -6,6 +6,7 @@ import { getAllProducts, deleteOneProduct } from "../../slice";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { LuFolderEdit } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import AdminPages from "./AdminPages";
 
 function AdminHome() {
   let serialNumber = useRef(0);
@@ -28,14 +29,15 @@ function AdminHome() {
     dispatch(deleteOneProduct(upis));
   }
   useEffect(() => {
-    console.log(deletedProduct);
+    // console.log(deletedProduct);
     if (deletedProduct.status == 202) {
       dispatch(getAllProducts({}));
       serialNumber.current = 0;
     }
   }, [deletedProduct]);
   return (
-    <div className='pt-20'>
+    <div className='pt-16'>
+      <AdminPages></AdminPages>
       <h1 className='text-blue-200 font-medium text-3xl text-center'>
         Dashboard
       </h1>

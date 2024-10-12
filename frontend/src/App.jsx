@@ -13,12 +13,16 @@ import ProductManage from "./Components/adminStuff/ProductManage";
 import AdminRoute from "./Components/adminStuff/AdminRoute";
 import { useDispatch, useSelector } from "react-redux";
 import { alreadyLogged } from "./slice";
+import DetailedProduct from "./Components/shop/DetailedProduct";
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(alreadyLogged({}));
     // console.log(user);
   }, []);
+
+ 
   return (
     <BrowserRouter>
       <div className='container w-full min-h-dvh min-w-full bg-gradient-to-br from-yellow-800 to-blue-800 relative'>
@@ -38,12 +42,15 @@ function App() {
               <AdminHome></AdminHome>
             }
           ></Route>
-
+          <Route
+            element={<DetailedProduct></DetailedProduct>}
+            path='/detailedproduct'
+          ></Route>
           <Route
             path='/admin/productManage'
             element={<ProductManage></ProductManage>}
           ></Route>
-          {/* <Route path='/home'></Route> */}
+          <Route path='/home'></Route>
         </Routes>
       </div>
     </BrowserRouter>

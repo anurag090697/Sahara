@@ -41,6 +41,18 @@ const productScehema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    trending: {
+      type: Boolean,
+    },
+    saharachoice: {
+      type: Boolean,
+    },
+    bestseller: {
+      type: Boolean,
+    },
+    daydeal: {
+      type: Boolean,
+    },
     inventory: {
       type: Number,
       required: true,

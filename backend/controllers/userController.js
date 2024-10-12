@@ -58,7 +58,7 @@ export async function userLogin(req, res) {
           httpOnly: true,
           secure: true,
           sameSite: "strict",
-          maxAge: 9600000,
+          maxAge: 86400000,
         })
         .status(202)
         .json({ ...checkUser._doc, logged: true });

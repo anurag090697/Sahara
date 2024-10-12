@@ -11,6 +11,6 @@ export function generatojwtToken(user) {
       isVerified: true,
     },
     process.env.JWT_SECRET,
-    { expiresIn: "3h" }
+    { expiresIn: "24h" }
   );
 }
