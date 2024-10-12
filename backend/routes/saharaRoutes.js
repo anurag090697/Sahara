@@ -12,6 +12,7 @@ import {
 } from "../controllers/userController.js";
 import {
   addNewProduct,
+  changeCart,
   changeWishlist,
   getAllProducts,
   getCartList,
@@ -40,6 +41,7 @@ saharaRouter.delete("/removeProduct/:upis", removeProduct);
 saharaRouter.post("/addNewProduct", upload.single("pics"), addNewProduct);
 saharaRouter.post("/getcartlist", getCartList);
 saharaRouter.post("/checkWishlist", changeWishlist);
+saharaRouter.post("/checkCart", changeCart);
 // saharaRouter.post(
 //   "/postPicture",
 //   // tempMiid,

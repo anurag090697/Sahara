@@ -31,14 +31,43 @@ function Header() {
     <div className='flex gap-3 items-center font-medium text-xl relative'>
       {user.logged ? (
         <>
-          {/* <p>Welcome</p> */}
-          <p className='text-green-700 underline'> {user.firstname}</p>
-          <button
-            onClick={() => logoutUser()}
-            className='text-red-600 hover:text-rose-900'
-          >
-            LogOut
-          </button>
+          <div>
+            <button
+              className={`text-3xl ${
+                dropdown ? "text-emerald-800" : "text-indigo-600"
+              }`}
+              onClick={() => setDropdown(true)}
+              onBlur={() => setDropdown(false)}
+            >
+              {/* <TiThMenu /> */}
+              <PiUserListBold />
+            </button>
+            <ul
+              className={`${
+                dropdown ? "" : "hidden"
+              } absolute bg-white right-4 w-44 p-4 text-cyan-700`}
+            >
+              <li className='text-green-700 underline bg-gray-200 hover:bg-gray-400 text-right w-full bg-gray-200'>
+                {user.firstname + " " + user.lastname}
+                <button
+                  onClick={() => logoutUser()}
+                  className='text-red-600 hover:text-rose-300 text-right w-full'
+                >
+                  LogOut
+                </button>
+              </li>
+
+              {/* <li className>
+               
+              </li> */}
+              <hr className='border-slate-800' />
+              <li className=' hover:bg-gray-400'>VIEW CART</li>
+              <hr className='border-slate-800' />
+              <li className=' hover:bg-gray-400'>VIEW WISHLIST</li>
+              <hr className='border-slate-800' />
+              <li className=' hover:bg-gray-400'>SETTINGS</li>
+            </ul>
+          </div>
         </>
       ) : (
         <div>
@@ -63,24 +92,8 @@ function Header() {
             className='w-20 hover:drop-shadow-[0px_0px_10px_rgba(255,205,0,1)]'
           />
         </NavLink>
-        {logio}
-        <div>
-          <button className='text-3xl' onClick={() => setDropdown(!dropdown)}>
-            {/* <TiThMenu /> */}
-            <PiUserListBold />
-          </button>
-          <ul
-            className={`${
-              dropdown ? "" : "hidden"
-            } absolute bg-white p-4 right-4`}
-          >
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
-        </div>
+
+        <div>{logio}</div>
       </nav>
     </header>
   );

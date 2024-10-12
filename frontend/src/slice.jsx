@@ -145,6 +145,22 @@ export const todoWishlist = createAsyncThunk(
   }
 );
 
+export const checkcart = createAsyncThunk(
+  "sahara/checkcart",
+  async ({ email, doThis, upis }, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.post("/checkCart", {
+        email,
+        upis,
+        doThis,
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const addNewProduct = createAsyncThunk(
   "sahara/addNewProduct",
   async (fData, { rejectWithValue }) => {
@@ -184,7 +200,7 @@ const saharaSlice = createSlice({
     adminProducts: [],
     multiResponse: { item: "", message: "", error: "" },
     deletedProduct: {},
-    cart: {},
+    cart: { products: [] },
     wishlist: [],
     status: "idle",
     error: null,
@@ -319,6 +335,19 @@ const saharaSlice = createSlice({
         state.wishlist = tm.wishlistData.products;
       })
       .addCase(todoWishlist.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
+      .addCase(checkcart.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(checkcart.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        let tm = action.payload;
+        state.cart = tm.cartData;
+        // state.wishlist = tm.wishlistData.products;
+      })
+      .addCase(checkcart.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       });

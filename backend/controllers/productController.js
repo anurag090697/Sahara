@@ -93,11 +93,59 @@ export async function changeWishlist(req, res) {
       }
       let tm2 = cartlist.wishlistData.products;
       cartlist.wishlistData.products = [...tm2, temp];
-      
+
       await cartlist.save();
       res.status(202).json(cartlist);
     }
     // res.send("hehe");
+  } catch (error) {
+    res.status(500).json({ error: "An error occured while deleting" });
+  }
+}
+
+export async function changeCart(req, res) {
+  try {
+    const { email, upis, doThis } = req.body;
+    const cData = await cartlistModel.findOne({ email });
+    if (!cData) {
+      return res.status(500).json({ error: "An error occured while deleting" });
+    }
+
+    let tempc = cData.cartData.products;
+    let quant = 0;
+    let prc = 0;
+    if (doThis === "remove") {
+      let newprod = [];
+      tempc.map((ele) => {
+        if (ele.upis !== upis) {
+          quant += ele.quantity;
+          prc += ele.quantity * ele.offerPrice;
+          newprod.push(ele);
+        }
+      });
+      cData.cartData.products = newprod;
+      cData.cartData.totalPrice = prc;
+      cData.cartData.totalQuantity = quant;
+      await cData.save();
+      return res.status(202).json(cData);
+    } else if (doThis === "add") {
+      const prodData = await productModel.findOne({ upis });
+      // console.log("first");
+      if (!prodData) {
+        return res
+          .status(500)
+          .json({ error: "An error occured while deleting" });
+      }
+      prodData.quantity = 1;
+      let proArr = cData.cartData.products;
+      cData.cartData.products = [...proArr, prodData];
+      cData.cartData.totalPrice =
+        cData.cartData.totalPrice + prodData.offerPrice;
+      cData.cartData.totalQuantity = 1;
+      await cData.save();
+
+      res.status(202).json(cData);
+    }
   } catch (error) {
     res.status(500).json({ error: "An error occured while deleting" });
   }

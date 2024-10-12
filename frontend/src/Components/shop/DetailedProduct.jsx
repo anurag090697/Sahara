@@ -10,7 +10,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { FaHeart } from "react-icons/fa";
-import { todoWishlist } from "../../slice";
+import { checkcart, todoWishlist } from "../../slice";
 
 function DetailedProduct() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function DetailedProduct() {
   const [imgarr, setImgArr] = useState([]);
   const [idx, setIdx] = useState(0);
   const ele = location.state;
-  // console.log(ele);
+
   const { user, cart, wishlist } = useSelector((state) => state.sahara);
   function inList(upis) {
     let ans = false;
@@ -29,10 +29,33 @@ function DetailedProduct() {
     // console.log(ans);
     return ans;
   }
+  // console.log(cart.products.length);
+  function inCart(upis) {
+    let ans = false;
+    let tm = cart.products;
+    if (tm.length < 1) return false;
+    tm.map((element) => {
+      // console.log(cart);
+      if (element && element.upis === upis) ans = true;
+    });
+    // console.log(ans);
+    return ans;
+  }
+
+  function changecart() {
+    if (inCart(ele.upis)) {
+      dispatch(
+        checkcart({ email: user.email, upis: ele.upis, doThis: "remove" })
+      );
+    } else {
+      dispatch(checkcart({ email: user.email, upis: ele.upis, doThis: "add" }));
+    }
+  }
+
   useEffect(() => {
     if (ele) {
       setImgArr(ele.images || []);
-      console.log(inList(ele), wishlist);
+      // console.log(inList(ele), wishlist);
     }
   }, [ele]);
 
@@ -86,7 +109,7 @@ function DetailedProduct() {
             <GrNext />
           </button>
         </div>
-        <div className='p-4 bg-sky-200 w-2/3 self-stretch'>
+        <div className='p-4 bg-gradient-to-br from-sky-200 via-rose-100 to-lime-200 w-2/3 self-stretch'>
           <div className='flex flex-col gap-4 items-start'>
             <h1 className='text-3xl'>{ele.title}</h1>
             {ele.saharachoice && (
@@ -130,12 +153,16 @@ function DetailedProduct() {
               </div>
             </div>
           </div>
-          <div className='flex gap-6 items-center my-4'>
+          <div
+            className={`flex gap-6 items-center my-4 ${
+              user.logged ? "" : "hidden"
+            }`}
+          >
             <button
-              //   onClick={() => handleAddToCart(ele)}
+              onClick={() => changecart()}
               className='rounded-xl text-gray-100 bg-lime-500 p-2 font-medium shadow-md shadow-lime-800 border-2 border-lime-600 hover:bg-lime-300 hover:text-rose-500 hover:shadow-none'
             >
-              Add To Cart
+              {inCart(ele.upis) ? "Remove from Cart" : "Add To Cart"}
             </button>
             <button
               onClick={() => checkWishlist()}

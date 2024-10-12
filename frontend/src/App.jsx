@@ -22,7 +22,6 @@ function App() {
     // console.log(user);
   }, []);
 
- 
   return (
     <BrowserRouter>
       <div className='container w-full min-h-dvh min-w-full bg-gradient-to-br from-yellow-800 to-blue-800 relative'>

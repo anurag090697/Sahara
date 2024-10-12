@@ -15,7 +15,7 @@ function Home() {
     dispatch(getAllProducts({}));
   }, []);
   return (
-    <div className='py-20 bg-gradient-to-bl from-amber-200 to-green-200'>
+    <div className='py-20 bg-gradient-to-bl from-amber-200 to-green-200 min-h-dvh'>
       <h1 className='w-fit mx-auto font-medium text-3xl text-orange-500'>
         Trending
       </h1>
