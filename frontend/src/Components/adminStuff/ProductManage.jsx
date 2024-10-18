@@ -63,6 +63,7 @@ function ProductManage() {
         fData.append(key, formData[key]);
       }
     }
+    // console.log(fData);
     dispatch(addNewProduct(fData));
   }
 
